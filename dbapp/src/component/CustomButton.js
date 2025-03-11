@@ -16,11 +16,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
         paadding: 10,
         alignItems: 'center',
-        justifyContent: 'center' ,
+        justifyContent: 'center',
         borderRadius: 5,
         height: 50,
         marginTop: 2,
-        width:380,
+        width: 380,
     },
     text: {
         color: 'white',

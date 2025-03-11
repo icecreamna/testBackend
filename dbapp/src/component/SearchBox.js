@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
-const SearchBox = ({ placeholder, value, onChangeText ,secure}) => {
+const SearchBox = ({ placeholder, value, onChangeText, secure }) => {
     return (
         <View style={styles.container}>
             <TextInput

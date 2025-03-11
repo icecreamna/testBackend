@@ -28,10 +28,25 @@ app.post('/register', async (req, res) => {
         encryptedPassword,
     ], function (error) {
         if (error) return res.status(400).send({ message: "User already exists" })
-            res.send({message:"User registered"})
+        res.send({ message: "User registered" })
     });
 });
 
+app.post("/login", (req, res) => {
+    const { username, password } = req.body
+    console.log("Login", username, password)
 
+    db.get(
+        `SELECT * FROM users where username = ?`, [username],
+        async (err, user) => {
+            if (!user || !(await bcrypt.compare(password, user.password)))
+                return res.status(400).send({ message: 'Invalid credential' }
+                )
+            const token = jwt.sign({ userId: user.id },"secretkey")
+            res.send({ token })
+        }
+
+    )
+})
 
 app.listen(5000, () => console.log("Server running on port 5000"))
